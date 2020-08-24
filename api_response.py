@@ -35,7 +35,7 @@ def ErrorInput(form):
 
 def filterUserFavorited(data):
     """ Remove user favorited colleges from the response """
-    #fetch user's favorited college
+    
     my_colleges = []
     
     user_favorites = g.user.favorites
