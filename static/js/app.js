@@ -111,6 +111,7 @@ function generateSingleCollegeHTML(college) {
             const update_data = response['data'];
             $(this).closest('td').html('<div class="edit-notes-div">'+ update_data + '<button class="edit-btn" data-notes="'+ text_notes +'" data-id="'+ id +'"> <i class="far fa-edit"></i></button></div>');
         }
+        
     }
 
     function editNotesBtn(evt) {

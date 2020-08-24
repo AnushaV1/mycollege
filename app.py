@@ -78,7 +78,7 @@ def signup():
             flash("Username already taken", 'danger')
             return render_template('user/signup.html', form=form)
         
-        flah("Welcome to My College App!")
+        flash("Welcome to My College App!")
         return redirect("/login")
 
     else:
@@ -181,7 +181,6 @@ def edit_notes():
     """edit notes for user's college  """
     edit_notes_id = request.json
     id = edit_notes_id['id']
-    print(edit_notes_id)
     favorites = UserFavorite.query.filter_by(id=id).one()
     form = EditForm(obj=favorites)
     favorites.notes = edit_notes_id['notes']
@@ -275,23 +274,6 @@ def homepage():
         return render_template('home-anon.html')
         
     
-
-# @app.route('/user/home')
-# if g.user:
-#         following_id = [following.id for following in g.user.following] + [g.user.id]
-#         messages = (Message
-#                     .query
-#                     .filter(Message.user_id.in_(following_id))
-#                     .order_by(Message.timestamp.desc())
-#                     .limit(100)
-#                     .all())
-#         liked_msg_ids = [msg.id for msg in g.user.likes]
-
-#         return render_template('home.html', messages=messages, likes=liked_msg_ids)
-
-#     else:
-#         return render_template('home-anon.html')
-
 @app.errorhandler(404)
 def page_not_found(e):
     """404 NOT FOUND page."""
