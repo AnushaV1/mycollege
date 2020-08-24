@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}Edit Profile{% endblock %}
+{% block content %}
+<div class="container-fluid" style="padding-top:20px;">
+  <div class="row">
+    <div class="col-md-2" id="leftpanel">
+      <p style="padding-top:10px;"><strong>My Dashboard </strong><span class="badge badge-success">{{ g.user.favorites | length }}</span></p>
+      <ul class="nav nav-pills nav-stacked" style="padding-top:5px;"> 
+        <li><a href="/"><i class="fas fa-list"></i> Shortlists</a></li>
+        <li><a href="/user/tags"><i class="fas fa-tag"></i> Tags</a></li>
+        <li><a href="/user/search"><i class="fas fa-search"></i> Search </a></li>
+        <li><a href="/user/profile"><i class="fas fa-search"></i> Edit Profile</a></li>
+        <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+    </ul>
+      </div>
+  
+    <div class="col-md-3 col-md-offset-1">
+      <img src="{{ g.user.image_url }}" alt="Image for {{ g.user.username }}" id="profile-avatar">
+      <h4 id="sidebar-username">{{ g.user.username }}</h4>
+      <p>{{g.user.email}}</p>
+      </div>
+
+      <div class="col-md-5">
+      <h2 class="join-message">Edit Your Profile!</h2>
+      <form method="POST" id="user_form">
+        {{ form.hidden_tag() }}
+
+        {% for field in form if field.widget.input_type != 'hidden' and field.name != 'password' %}
+          {% for error in field.errors %}
+            <span class="text-danger">{{ error }}</span>
+          {% endfor %}
+          {{ field(placeholder=field.label.text, class="form-control") }}
+        {% endfor %}
+
+        <p>To confirm changes, enter your password:</p>
+        {% if form.password.errors %}
+          {% for error in form.password.errors %}
+            <span class="text-danger">
+            {{ error }}
+          </span>
+          {% endfor %}
+        {% endif %}
+        {{ form.password(placeholder="Enter your password to confirm", class="form-control") }}
+
+        <div class="edit-btn-area">
+          <button class="btn btn-success">Edit this user!</button>
+          <a href="/users/{{ user_id }}" class="btn btn-outline-secondary">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

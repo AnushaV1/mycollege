@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block title %}Search College{% endblock %}
+{% block content %}
+<div class="container-fluid">
+  <section id="search-college">
+    <div class="container-fluid text-center">
+    <form id="search-form">
+      <div class="form-row">
+        <div class="form-group col-md-3">
+          <input name="sat_score" id="sat_score" placeholder="SAT Score (Optional)" class="form-control">
+        </div>
+        <div class="form-group col-md-3">
+          <input type="text" name="zipcode" id="zipcode" placeholder="Zipcode (Optional)" class="form-control">
+        </div>
+        <div class="form-group col-md-3">
+          <input type="text" name="max_tuition" id="max_tuition" placeholder="Max tuition fees (Optional)" class="form-control">
+        </div>
+        <div class="form-group col-md-3">
+          <input name="distance_from_home" id="distance_from_home" placeholder="Distance from home(miles) (Optional)" class="form-control">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-sm-2">
+          <label for="funding">Funding</label>
+          <select id="funding-type" name="funding[]" multiple="multiple" class="form-control form-control-lg">
+              <option value="public">Public</option>
+              <option value="private">Private</option>
+              <option value="forprofit">for Profit</option>
+              </select>
+      </div>
+      
+        <div class="form-group col-sm-3">
+          <label for="show_safeties">Safety Colleges</label>
+        <input type="checkbox" name="show_safeties" id="show_safeties" class="form-control form-control-sm">
+      
+        </div>
+      
+        <div class="form-group col-sm-3">
+          <label for="show_reaches">Reach Colleges</label>
+          <input type="checkbox" name="show_reaches" id="show_reaches" class="form-control">
+      </div>
+      <div class="form-group col-sm-3">
+        <label for="show_safeties">Close to my score</label>
+        <input type="checkbox" name="close_to_myscore" id="close_to_myscore" class="form-control">
+    </div>
+    </div>  
+    <div class="form-row text-right">
+      <div class="col-sm-12">
+        <button type="submit" class="btn btn-info">Search</button>
+      
+        </div>
+    </div>  
+      </form>
+    </div>  
+    </section>
+<br>
+<section class="container-fluid">
+		<div id="show_colleges" class="row" style="float:left">
+    </div>
+</section>
+<br>
+</div>
+<script type="text/javascript" src="/static/js/collegeSearch.js"></script>
+{% endblock %}

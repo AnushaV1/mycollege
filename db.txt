@@ -1,0 +1,26 @@
+user
+-
+user_id PK int
+username string INDEX
+email string
+password NULL string
+
+
+tag
+-
+tag_id PK int FK >- user_favorites_tag.tag_id
+tag_name string
+
+
+user_favorites as ol
+----
+id PK int FK >- user_favorites_tag.user_favorite_id
+user_id int FK >- user.user_id
+college_id int
+notes text
+
+user_favorites_tag
+---
+id PK int
+user_favorite_id user_favorites.id
+tag_id tag.tag_id

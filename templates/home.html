@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block title %}My College{% endblock %}
+{% block content %}
+<div class="container-fluid" style="padding-top:20px;">
+  <div class="row">
+    <div class="col-md-2" id="leftpanel">
+      <p style="padding-top:10px;"><strong>My Dashboard </strong><span class="badge badge-success">{{ g.user.favorites | length }}</span></p>
+      <ul class="nav nav-pills nav-stacked" style="padding-top:5px;"> 
+        <li><a href="/"><i class="fas fa-list"></i> Shortlists</a></li>
+        <li><a href="/user/tags"><i class="fas fa-tag"></i> Tags</a></li>
+        <li><a href="/user/search"><i class="fas fa-search"></i> Search </a></li>
+        <li><a href="/user/profile"><i class="far fa-edit"></i> Edit Profile</a></li>
+        <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+    </ul>
+      </div>
+  {% if favorites %}
+  <div class="col-md-10" style="overflow: scroll">
+<table id="shortlist_table" class="table table-striped table-hover table-bordered">
+    <thead class="thead-light bg-info">
+            <tr>
+          <th scope="col">My Shortlists</th>
+          <th scope="col">Notes</th>
+          <th style="text-align:center" scope="col ">More</th>
+          <th style="text-align:center" scope="col">Remove</th>
+        </tr>
+      </thead>
+      <tbody id="shortlist-table-body">
+        {% for fav in favorites %}
+        <tr><td>{{fav.college_name}}</td> 
+          {% if fav.notes %}
+          <td><div class="edit-notes-div">{{fav.notes}} <button class="edit-btn" data-notes="{{fav.notes}}" data-id="{{fav.id}}"><i class="far fa-edit"></i></button></div></td>
+          {% else %}
+          <td><div class="notes-btn-div"><button class="notes-btn" id="btn-notes{{fav.id}}" data-id="{{fav.id}}">Add Notes</button></div></td>
+          {% endif %}
+          
+          <td class="singlebtn" align="center">
+              <button data-id='{{ fav.college_id }}' class="btn btn-link " data-toggle="modal" data-target="{{ fav.college_id }}" id="{{ fav.college_id }}">Details</button>
+            </td>
+          <form>
+          {{form.hidden_tag()}} 
+          <td align="center">
+            <button class="btn btn-warning" formmethod="POST" formaction="/user/{{ fav.id }}/delete"><i class="far fa-trash-alt"></i></button></td>
+          </form>
+        
+        </tr>
+      
+        {% endfor %}  
+      </tbody>
+</table>
+</div>
+{% else %}
+
+<div class="jumbotron">
+  <div class="container">
+    <p class="display-4">Sorry, you have not shortlisted any colleges.</p>
+    <p><a class="btn btn-info btn-lg" href="/user/search">Start Search</a></p>
+  </div>
+</div>
+
+{% endif %}
+
+
+<div class="container">
+  <div class="modal fade" id="collegeModal" role="dialog">
+    <div class="modal-dialog modal-xl">
+
+  <!-- Modal content-->
+    <div class="modal-content">
+  </div>
+  
+    </div>
+  </div>
+</div>
+
+</div>
+  <script src="/static/js/app.js"></script>
+{% endblock %}
+
+
+

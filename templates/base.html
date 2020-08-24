@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %} {% endblock %}</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
+  <link rel="stylesheet"
+  href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css">
+  <link rel="stylesheet" href="/static/stylesheet/style.css">
+  <link rel="shortcut icon" href="/static/favicon.ico">
+</head>
+<body>
+  <nav class="navbar navbar-expand navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="/" class="navbar-brand">
+          <img src="/static/img/book-stack.jpg" alt="logo"> 
+          <span>  My College</span>
+        </a>
+      </div>
+    
+    <ul class="nav navbar-nav navbar-right">
+    {% if not g.user %}
+    <li class="nav-item active">
+      <a class="nav-link" href="/">Home</a>
+    </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/login">Login <i class="fas fa-sign-in-alt"></i></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/signup">Sign Up</a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="/user/search">Search <i class="fas fa-search"></i></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/">
+          My Dashboard  
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/user/profile">
+          Edit Profile <i class="far fa-edit"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">Logout <i class="fas fa-sign-out-alt"></i></a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+  </nav>
+  <br>
+<div class="container-fluid" style="padding-top:5px;">
+  {% for category, message in get_flashed_messages(with_categories=True) %}
+  <div id="message" class="alert alert-{{ category }}">{{ message }}</div>
+  {% endfor %}
+<br>
+    {% block content %}
+    {% endblock %}
+  </div>
+<br>
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="container-fluid">
+    <div class="footer-top">
+      <div class="container-fluid">
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6 footer-info">
+            <h4>API - <a href="https://api.collegeai.com/v1/docs/overview/getting-started">Collegeai API</a></h4>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-links">
+            <h4>Springboard Capstone project 1</h4>
+          </div>
+
+        
+            <div class="col-lg-4 col-md-6 social-links">
+                <a href="http://www.linkedin.com/in/anusha-venkataraghavan" class="linkedin"><i class="fab fa-linkedin"></i></a>
+            </div>
+        
+        
+        </div>
+      </div>
+    </div>
+
+  </footer><!-- End Footer -->
+
+
+  </body>
+</html>

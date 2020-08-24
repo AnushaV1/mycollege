@@ -1,0 +1,24 @@
+
+
+https://api.collegeai.com/v1/api/college-list?api_key=free_b5a99182249de8c8037679ba65&filters=%7B%0A%22funding-type%22%3A%5B%22public%22%5D%2C%0A%22schoolSize%22%3A%5B%22large%22%5D%2C%0A%22zipCode%22%3A%2295014%22%2C%0A%22distanceFromHomeMiles%22%3A%5B0%2C300%5D%2C%0A%22satOverall%22%3A1200%2C%0A%22closeToMyScores%22%3Atrue%0A%7D&info_ids=website%2CshortDescription%2ClongDescription%2CcampusImage%2Ccity%2CstateAbbr%2Caliases%2Ccolors%2ClocationLong%2ClocationLat
+
+###
+https://api.collegeai.com/v1/api/college-list?api_key=free_b5a99182249de8c8037679ba65&filters={"satOverall":1234,"closeToMyScores":true,"show_safeties":true,"show_reaches":true,"distanceFromHomeMiles":[0,1000]}&info-ids=Website,shortDescription,longDescription,campusImage,city,stateAbbr,Aliases,Colors,acceptanceRate
+
+
+###
+https://api.collegeai.com/v1/api/college/info?api_key=free_b5a99182249de8c8037679ba65&college_unit_ids=166683&info_ids=campusImage,shortDescription,city,stateAbbr,in_state_tuition,out_of_state_tuition,website,acceptanceRate,student_faculty_ratio,financial_aid_website,similar_colleges
+###
+Content-Type: application/json
+
+  filters :
+    {
+        "funding-type":["public"],
+        "schoolSize":["large"],
+        "zipCode":"95014",
+        "distanceFromHomeMiles":[0,300],
+        "satOverall":1460,
+        "closeToMyScores":true
+        }
+
+
