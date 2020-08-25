@@ -2,9 +2,6 @@ import requests, json, os
 from flask import jsonify, g
 BASE_URL = 'https://api.collegeai.com/v1/api/college-list'
 API_KEY = os.environ.get('API_KEY', 'api_key')
-print("****************")
-print(API_KEY)
-print("****************")
 
 def sendRequest(data):
     """Request API from backend """
