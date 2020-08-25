@@ -1,7 +1,8 @@
-import requests, json
+import requests, json, os
 from flask import jsonify, g
 BASE_URL = 'https://api.collegeai.com/v1/api/college-list'
-API_KEY = 'api_key'
+API_KEY = os.environ.get('API_KEY', 'api_key')
+
 def sendRequest(data):
     """Request API from backend """
     d1 = json.dumps(data)
@@ -12,7 +13,10 @@ def sendRequest(data):
     
     if (data['success']):
         
-        filtered_response = filterUserFavorited(data['colleges']) 
+        filtered_response = filterUserFavorited(data['colleges'])
+
+    else:
+        filtered_response = jsonify("false")
     
     return filtered_response
 
