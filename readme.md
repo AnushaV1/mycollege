@@ -15,7 +15,7 @@ My College is a flask and AJAX based application that makes college search easie
 
 After the user signs up for an account, they are all set to search for colleges with options to enter/select zip code, distance in miles, SAT score, close to SAT score, Reach School, Safety School, Public/Private/For profit, tuition fees etc. The users are recommended to utilize search features for best results. The college list are populated below the search form with option to shortlist individual colleges if they wish to. The users can see the shortlisted colleges in the homepage once they login. The users can customize each college adding notes. For example, what details they may want to look for in that college or what information they know about the college etc. They can delete individual colleges from their shortlist if they are not interested in that college. They can also tag the colleges to reach, safety, co-ops etc.
 
-##Demo
+## Demo
 See demo [here](https://mycollegefinder.herokuapp.com/)
 
 ## Getting Started
