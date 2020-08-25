@@ -33,18 +33,21 @@
     
     function handleResponse(resp) {
         const data = resp['data']
+        console.log(data)
         $results.empty();
         
-        if(data.length > 0) {
+        if(data =="false")
+        {
+            let noResultHTML = generateNoResultHTML();
+                $results.append(noResultHTML);
+        }
+        
+        else {
         for(let college of data) {
         const collegeMarkup = generateCollegeHTML(college);
         $results.append(collegeMarkup);
         }
-    }
-        else {
-        let noResultHTML = generateNoResultHTML();
-            $results.append(noResultHTML);
-    }
+        }
     }
     
     function generateNoResultHTML() {
