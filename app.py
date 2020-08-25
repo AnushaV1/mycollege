@@ -78,7 +78,7 @@ def signup():
             flash("Username already taken", 'danger')
             return render_template('user/signup.html', form=form)
         
-        flash("Welcome to My College App!")
+        flash("Welcome to My College App!",'success')
         return redirect("/login")
 
     else:
