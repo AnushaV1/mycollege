@@ -2,7 +2,7 @@
 
 ## Introduction
 
-My College is a flask and AJAX based application that makes college search easier for anyone looking forward to apply for colleges which is built using HTML, JQuery, Bootstrap, Python3, PostgreSQL, SQLAlchemy, Jinja, WTForms stack.
+My College is a flask and AJAX based application that makes college search easier for anyone looking forward to apply for colleges which is built using HTML, JQuery, Bootstrap, Python3, PostgreSQL, SQLAlchemy, Jinja, WTForms.
 
 ## Features
 
