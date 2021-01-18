@@ -24,7 +24,7 @@
         if($('input[name="close_to_myscore"]').is(':checked')){
             data.closeToMyScores ="true"
         }
-       
+
         let response = await axios.get("/api/get-college", {params: data});
         $("#search-form").trigger("reset");
         handleResponse(response)
@@ -33,9 +33,7 @@
     
     function handleResponse(resp) {
         const data = resp['data']
-        console.log(data)
-        $results.empty();
-        
+        $results.empty();        
         if(data =="false")
         {
             let noResultHTML = generateNoResultHTML();

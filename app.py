@@ -92,8 +92,7 @@ def login():
     form = LoginForm()
 
     if form.validate_on_submit():
-        user = User.authenticate(form.username.data,
-                                 form.password.data)
+        user = User.authenticate(form.username.data, form.password.data)
 
         if user:
             do_login(user)
@@ -233,7 +232,7 @@ def shortlist():
     return jsonify({"result": "shortlisted"})
 
 ########### Delete / Remove from shortlist #############
-@app.route("/user/<int:fav_id>/delete", methods=["POST"])
+@app.route("/user/<int:fav_id>/delete/", methods=["POST"])
 @login_required
 def remove_from_shortlist(fav_id):
     """ Remove unfavorited college id from table """
